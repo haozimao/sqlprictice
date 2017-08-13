@@ -56,4 +56,18 @@ def creatsql():
     db.close()
     cursor.close()
 
-def writesql
+def writesql(fname,lname,age,sex,income):
+    db=pymysql.connect("127.0.0.1", "root", "hu19950615", "world")
+    cursor=db.cursor()
+    sql = "INSERT INTO EMPLOYEE(FNAME,LNAME, AGE, SEX, INCOME) \
+           VALUES ('%s', '%s', '%d', '%c', '%d' )" % \
+          (fname, lname,age, sex, income)
+    try:
+        cursor.execute(sql)
+        db.commit()
+    except:
+        print("no")
+    db.close()
+    cursor.close()
+
+writesql()
